@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class Car {
     @Id
+    @Column(name = "id")
     @GeneratedValue(generator = "carseq")
     @GenericGenerator(name ="carseq", strategy = "increment")
     private int id;
