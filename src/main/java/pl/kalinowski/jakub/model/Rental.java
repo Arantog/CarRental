@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Rent {
+public class Rental {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "rentseq")
@@ -24,10 +24,10 @@ public class Rent {
     @Column(name = "car")
     private Car car;
 
-    public Rent() {
+    public Rental() {
     }
 
-    public Rent(LocalDate date, Customer customer, Car car) {
+    public Rental(LocalDate date, Customer customer, Car car) {
         this.date = date;
         this.customer = customer;
         this.car = car;
@@ -47,7 +47,7 @@ public class Rent {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Rent rent = (Rent) o;
+        Rental rent = (Rental) o;
         return id == rent.id &&
                 Objects.equals(date, rent.date) &&
                 Objects.equals(customer, rent.customer) &&
