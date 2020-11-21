@@ -1,6 +1,6 @@
-package pl.kalinowski.jakub.dao;
+package pl.sda.dao;
 
-import pl.kalinowski.jakub.model.Car;
+import pl.sda.model.Car;
 
 public class CarDao extends AbstractDao<Car> {
     public CarDao() {

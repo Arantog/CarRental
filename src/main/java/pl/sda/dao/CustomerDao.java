@@ -1,6 +1,6 @@
-package pl.kalinowski.jakub.dao;
+package pl.sda.dao;
 
-import pl.kalinowski.jakub.model.Customer;
+import pl.sda.model.Customer;
 
 public class CustomerDao extends AbstractDao<Customer>{
     public CustomerDao() {

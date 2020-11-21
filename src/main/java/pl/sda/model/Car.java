@@ -1,12 +1,12 @@
-package pl.kalinowski.jakub.model;
+package pl.sda.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Car")
 public class Car {
     @Id
     @Column(name = "id")

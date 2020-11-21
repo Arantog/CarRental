@@ -1,4 +1,4 @@
-package pl.kalinowski.jakub.database;
+package pl.sda.database;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

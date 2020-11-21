@@ -1,11 +1,14 @@
-package pl.kalinowski.jakub.model;
+package pl.sda.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
+@Entity
+@Table(name = "Rental")
 public class Rental {
     @Id
     @Column(name = "id")
@@ -16,26 +19,35 @@ public class Rental {
     @Column(name = "date")
     private LocalDate date;
 
-    @ManyToMany(targetEntity = Customer.class)
-    @Column(name = "customer")
-    private Customer customer;
+    @OneToMany(targetEntity = Customer.class)
+    private List<Customer> customer;
 
-    @ManyToOne(targetEntity = Car.class)
-    @Column(name = "car")
-    private Car car;
+    @OneToMany(targetEntity =  Car.class)
+    private List<Car> car;
 
     public Rental() {
     }
 
-    public Rental(LocalDate date, Customer customer, Car car) {
+    public Rental(LocalDate date, ArrayList<Customer> customer, ArrayList<Car> car) {
         this.date = date;
         this.customer = customer;
         this.car = car;
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rental rental = (Rental) o;
+        return id == rental.id &&
+                Objects.equals(date, rental.date) &&
+                Objects.equals(customer, rental.customer) &&
+                Objects.equals(car, rental.car);
+    }
+
+    @Override
     public String toString() {
-        return "Rent{" +
+        return "Rental{" +
                 "id=" + id +
                 ", date=" + date +
                 ", customer=" + customer +
@@ -44,20 +56,10 @@ public class Rental {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Rental rent = (Rental) o;
-        return id == rent.id &&
-                Objects.equals(date, rent.date) &&
-                Objects.equals(customer, rent.customer) &&
-                Objects.equals(car, rent.car);
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(id, date, customer, car);
     }
+
     public int getId() {
         return id;
     }
@@ -74,20 +76,19 @@ public class Rental {
         this.date = date;
     }
 
-    public Customer getCustomer() {
+    public List<Customer> getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(List<Customer> customer) {
         this.customer = customer;
     }
 
-    public Car getCar() {
+    public List<Car> getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar(List<Car> car) {
         this.car = car;
     }
-
 }

@@ -1,6 +1,6 @@
-package pl.kalinowski.jakub.dao;
+package pl.sda.dao;
 
-import pl.kalinowski.jakub.model.Rental;
+import pl.sda.model.Rental;
 
 public class RentalDao extends AbstractDao<Rental> {
     public RentalDao() {
